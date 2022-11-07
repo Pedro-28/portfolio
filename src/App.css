@@ -1,38 +1,343 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
+  background-image: linear-gradient(
+    305deg,
+  hsl(0deg 0% 0%) 0%,
+  hsl(0deg 0% 11%) 14%,
+  hsl(0deg 0% 14%) 29%,
+  hsl(0deg 1% 9%) 43%,
+  hsl(0deg 1% 7%) 57%,
+  hsl(0deg 0% 10%) 71%,
+  hsl(0deg 0% 8%) 86%,
+  hsl(0deg 0% 0%) 100%
+  );
   min-height: 100vh;
+}
+
+.header-container {
+  align-items: center;
+  border-bottom: white 1px solid;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.header-scrolled {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-bottom: none;
+}
+
+.header-nav-container {
+  display: flex;
+  gap: 2em;
+  justify-content: space-evenly;
+}
+
+.header-nav-menu {
+  border: none;
+  border-top: white 2px solid;
+  background-color: transparent;
+  color: white;
+  display: none;
+  width: 40px;
+  transition-delay: .2s;
+}
+
+.header-nav-menu::after, .header-nav-menu::before {
+  background: currentColor;
+  content: '';
+  display: block;
+  height: 2px;
+  margin-top: 10px;
+  position: relative;
+  transition: .3s;
+  width: 40px;
+}
+
+.header-nav-menu.active {
+  border-top: transparent;
+}
+
+.active.header-nav-menu::before {
+  transform: rotate(135deg);
+}
+
+.active.header-nav-menu::after {
+  top: -11px;
+  transform: rotate(-135deg);
+}
+
+.header-nav-item-container {
+  color: white; 
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;  
+}
+
+.header-nav-item-container:hover {
+  text-decoration: none;
+  transform: scale(1.2) ;
+}
+
+.home-container {  
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 100px;
+}
+
+.profile-wrapper {  
+  background: url('./images/profile.png') no-repeat center;
+  background-blend-mode: color-dodge;
+  background-size: contain;
+  color: transparent;
+  font-size: 0.6em;
+  height: 500px;
+  letter-spacing: -0.05em;
+  line-height: 0.7em;
+  overflow: hidden;
+  width: 500px;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+}
+
+.about-container {
+  box-sizing: content-box;
+  align-items: center;
+  border-bottom: white 1px solid;
+  border-top: white 1px solid;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  min-height: 500px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.about-container h1 {
+  font-size: 2.5em;
+  margin-bottom: 50px;
+}
+
+.about-container p {
+  text-align: center;
+  font-size: 1.5em;
+  width: 70%;
+}
+
+.projects-container {
+  align-items: center;
+  box-sizing: content-box;  
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  margin-top: 50px;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-container h1 {
+  font-size: 2.5em;
+}
+
+.swiper {
+  width: 100%;
+  padding: 50px 20px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  border: 1px black solid;
+  border-radius: 15px;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  z-index: 99;
+}
+
+.project-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.project-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 0px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+  transition: 1s;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.project-info p {
+  text-align: center;
+  width: 90%;
+}
+
+.project-links {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.project-link-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.project-link-icon:hover {
+  transform: scale(1.1);
+}
+
+.swiper-slide-active:hover .project-info{
+  background-color: rgba(0, 0, 0, 0.92);
+  height: 100%;
+  visibility: visible;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.skills-container {
+  align-items: center;
+  box-sizing: content-box; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+  padding-bottom: 30px;
+  padding-top: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.skills-container h1 {
+  font-size: 2.5em;
+  margin-bottom: 50px;
+}
+
+.skills-wrapper {  
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 15%;
+}
+
+.skills-wrapper svg {
+  width: 80px;
+}
+
+.footer-container {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: flex-end;
+  height: 70px;
+}
+
+.footer-link-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.footer-link-icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 800px) {
+  .header-container {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: none;
+    justify-content: space-between;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header-nav-menu {
+    display: block;
+  }
+
+  .header-nav-container {
+    align-items: center;
+    background-color: inherit;
+    border-bottom: inherit;
+    flex-direction: column;
+    right: 20px;
+    height: 0px;
+    gap: 0;
+    overflow: hidden;
+    position: absolute;
+    transition: .5s ease-in-out;
+    top: 68px;
+    width: 0px;
+    z-index: 20;
+  }
+
+  .header-nav-item-container {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .active-nav .header-container {
+    border-bottom: none;
+  }
+
+  .active-nav {
+    height: 250px;
+    right: 0px;
+    width: 100%;
+  }
+
+  .home-container {
+    flex-direction: column;
+    min-height: 600px;
+    padding-bottom: 30px;
+  }
+
+  .profile-wrapper {
+    border-bottom: 1px white solid;
+    border-top: 1px white solid;
+    border-radius: 10px;
+    background-clip: border-box;
+    width: 320px;
+    height: 320px;
   }
 }
