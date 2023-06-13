@@ -269,8 +269,19 @@ html {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 70px;
+}
+
+.footer-email-wrapper {
+  color: white;
+  display: flex;
+  gap: 5px;
+  margin-left: 20px;
+}
+
+.footer-email-label {
+  font-weight: bold;
 }
 
 .footer-link-icon {

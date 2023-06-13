@@ -4,11 +4,11 @@ export default function About() {
     <div id="about" className="about-container">
       <h1>Sobre mim</h1>
       <p>
-        Eu sou desenvolvedor Front-end que ama tecnologia e programação.
-
-        Acredito que a programação me ajuda a desenvolver aplicações que melhoram a experiência e como as pessoas usam páginas web.
-
-        Estudo desenvolvimento de software na trybe e estou em busca de se tornar um desenvolvedor full-stack.
+        Sempre me coloquei à disposição para novas experiências.
+        Hoje, sou um desenvolvedor full-stack apaixonado por resolver problemas e
+        constantemente me esforço para melhorar a acessibilidade dos sites.
+        Estou preparado para aplicar minhas habilidades, criando soluções que
+        ajudam as empresas a oferecer recursos mais amplos.
       </p>
     </div>
   );
